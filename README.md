@@ -12,4 +12,6 @@ Frameworks:
 
 - Hibernate for database persistence and validation.
 
+- Log4j
+
 - JasperReports
