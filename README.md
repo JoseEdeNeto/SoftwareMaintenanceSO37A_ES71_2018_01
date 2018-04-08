@@ -1,14 +1,14 @@
 ## About the Repository
 
-# This repository contais a Java Desktop Application previously developed to Desktop Programation discipline by other members of the group that will work on the project.
+This repository contais a Java Desktop Application previously developed to Desktop Programation discipline by other members of the group that will work on the project.
 
-# The application will be under Sofwtare Maintenance following the process defined in the ISO/IEC 14764.
+The application will be under Sofwtare Maintenance following the process defined in the ISO/IEC 14764.
 
 ## About the Application
 
-# Scheduling trips to a bus company
+Scheduling trips to a bus company
 
-# Frameworks
+Frameworks:
 
 - Hibernate for database persistence and validation.
 
