@@ -6,7 +6,7 @@ The application will be under Sofwtare Maintenance following the process defined
 
 ## About the Application
 
-Scheduling trips to a bus company
+Trips scheduling to a bus company.
 
 Frameworks:
 
