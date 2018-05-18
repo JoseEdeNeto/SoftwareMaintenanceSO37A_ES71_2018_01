@@ -1,39 +1,56 @@
 package Classes;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-/**
- *
- * @author Jeff
- */
-@Entity
-public class Passageiro {
-    @Id @Column(name = "rg", nullable = false)
-    private int rg;
-    @Column(name = "nome", nullable = true, length = 50)
+
+@Entity @Table(name="passageiro")
+public class Passageiro implements Serializable {
+  
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "pas_id")
+    private int id;
+    
+    @Column(name = "pas_cpf", nullable = false)
+    private int cpf;
+    
+    @Column(name = "pas_nome", nullable = true, length = 50)
     private String nome;
-    @Column(name = "endereco", nullable = true, length = 100)
+    
+    @Column(name = "pas_endereco", nullable = true, length = 100)
     private String endereco;
-    @Column (name = "telefone", nullable = true)
-    private int telefone; 
+    
+    @Column(name = "pas_telefone", nullable = true)
+    private int telefone;
+    
     
     public Passageiro(){}
-    
-    public Passageiro(int r, String nm, String end, int t){
-        nome = nm;
-        endereco = end;
-        rg = r; 
-        telefone = t; 
+
+    public Passageiro(int cpf, String nome, String endereco, int telefone) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
     }
-   
+    
+    public int getId(){
+        return id;
+    }
+
+    public int getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+
     public int getTelefone() {
         return telefone;
     }
@@ -42,13 +59,12 @@ public class Passageiro {
         this.telefone = telefone;
     }
      
-
-    public int getRg() {
-        return rg;
+    public int getCPF() {
+        return getCpf();
     }
 
-    public void setRg(int rg) {
-        this.rg = rg;
+    public void setRg(int cpf) {
+        this.setCpf(cpf);
     }
 
     public String getNome() {
@@ -66,4 +82,9 @@ public class Passageiro {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

@@ -1,38 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/**
- *
- * @author Jeff
- */
-@Entity
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity @Table(name="motorista")
 public class Motorista {
-    @Id @Column(name = "cnh", nullable = false)
+    
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "mot_id")
+    private Long id;
+    
+    @Column(name = "mot_cnh", nullable = false)
     private int cnh;
-    @Column(name = "nome", nullable = true, length = 50)
+    
+    @Column(name = "mot_nome", nullable = true, length = 50)
     private String nome;
-    @Column(name = "endereco", nullable = true, length = 100)
+    
+    @Column(name = "mot_endereco", nullable = true, length = 100)
     private String endereco;
-    @Column (name = "telefone", nullable = true)
+    
+    @Column(name = "mot_telefone", nullable = true)
     private int telefone;
     
-    public Motorista(){}
+    @OneToMany(mappedBy = "motorista", targetEntity = Viagem.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Viagem> mot_viagens;
     
-    public Motorista(int c, String n, String e, int tel){
-        cnh = c; 
-        nome = n;
-        endereco = e;
-        telefone = tel; 
-    }
+    public Motorista(){}
 
+    public Motorista(int cnh, String nome, String endereco, int telefone) {
+        this.cnh = cnh;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+    }
+    
     public int getCnh() {
         return cnh;
     }
@@ -64,6 +74,21 @@ public class Motorista {
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
-    
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Viagem> getViagens() {
+        return mot_viagens;
+    }
+
+    public void setViagens(List<Viagem> viagens) {
+        this.mot_viagens = viagens;
+    }
+      
 }
