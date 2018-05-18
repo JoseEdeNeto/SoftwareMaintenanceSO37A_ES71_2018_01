@@ -57,7 +57,7 @@ public class ViagemDAO {
 
     public List <Viagem> listaviagens(int numero){
         return session.createQuery(
-                "from Viagem where numero>"+numero).list();
+                "from viagem where numero>"+numero).list();
     }
 
     public List <Viagem> listaviagensSQL(String sql){

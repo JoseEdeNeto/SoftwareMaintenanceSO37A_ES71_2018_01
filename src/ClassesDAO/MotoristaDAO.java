@@ -58,7 +58,7 @@ public class MotoristaDAO {
 
     public List <Motorista> listamotoristas(int cnh){
         return session.createQuery(
-                "from Motorista where cnh>"+cnh).list();
+                "from motorista where cnh>"+cnh).list();
     }
 
     public List <Motorista> listamotoristasSQL(String sql){

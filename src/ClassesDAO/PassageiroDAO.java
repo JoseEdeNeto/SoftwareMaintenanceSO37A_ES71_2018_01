@@ -59,7 +59,7 @@ public class PassageiroDAO {
 
     public List <Passageiro> listapassageiros(int rg){
         return session.createQuery(
-                "from Passageiro where rg>"+rg).list();
+                "from passageiro where rg>"+rg).list();
     }
 
     public List <Passageiro> listapassageirosSQL(String sql){
