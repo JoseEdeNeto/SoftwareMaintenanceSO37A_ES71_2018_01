@@ -36,7 +36,7 @@ public class TelaConsultaMotorista extends javax.swing.JFrame {
         modelo.addColumn("Nome");
         modelo.addColumn("Endereço");
         modelo.addColumn("Telefone");
-        mot = dao.listamotoristasSQL("select * from Motorista order by cnh");
+        mot = dao.listamotoristasSQL("select * from motorista order by mot_nome");
         Object rowData[] = new Object[4];
         int i = 0;
         for (Motorista m : mot) {

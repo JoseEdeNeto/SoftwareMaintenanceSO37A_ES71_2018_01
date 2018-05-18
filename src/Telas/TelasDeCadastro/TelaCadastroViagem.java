@@ -1,9 +1,10 @@
 package Telas.TelasDeCadastro;
 
-
+import Classes.Motorista;
 import Telas.TelasDeCadastro.TelaDeCadastros;
 import Classes.Passageiro;
 import Classes.Viagem;
+import ClassesDAO.MotoristaDAO;
 import ClassesDAO.PassageiroDAO;
 import ClassesDAO.ViagemDAO;
 import Controller.HibernateUtil;
@@ -13,23 +14,22 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Jeff
- */
 public class TelaCadastroViagem extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaCadastroPassageiro
-     */
     public TelaCadastroViagem() {
         initComponents();
+        popularJcbMotorista();
+    }
+    
+    public void popularJcbMotorista(){
+        MotoristaDAO motDAO = new MotoristaDAO(HibernateUtil.getSession());
+
+        if (motDAO.listaTudo() != null){
+            for (Motorista mot : motDAO.listaTudo()){
+                jcbMotorista.addItem(mot.getNome());
+            }
+        }
     }
     
     /**
@@ -43,29 +43,29 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
 
         lblCadastroDePassageiro = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
-        lblRG = new javax.swing.JLabel();
-        lblEndereco = new javax.swing.JLabel();
-        jtfNumero = new javax.swing.JTextField();
         jtfPreco = new javax.swing.JTextField();
-        jtfDescricao = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        lblDataSaida = new javax.swing.JLabel();
+        jtfDataSaida = new javax.swing.JTextField();
+        lblDataChegada = new javax.swing.JLabel();
+        jtfDataChegada = new javax.swing.JTextField();
+        lblHoraSaida = new javax.swing.JLabel();
+        jtfHoraSaida = new javax.swing.JTextField();
+        lblHoraChegada = new javax.swing.JLabel();
+        jtfHoraChegada = new javax.swing.JTextField();
+        lblMotorista = new javax.swing.JLabel();
+        jcbMotorista = new javax.swing.JComboBox<>();
+        lblCidadeSaida = new javax.swing.JLabel();
+        jtfCidadeSaida = new javax.swing.JTextField();
+        lblCidadeSaida1 = new javax.swing.JLabel();
+        jtfCidadeChegada = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblCadastroDePassageiro.setText("Cadastro de Viagem");
 
         lblNome.setText("Preço:");
-
-        lblRG.setText("Numero:");
-
-        lblEndereco.setText("Descrição:");
-
-        jtfNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNumeroActionPerformed(evt);
-            }
-        });
 
         jtfPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,58 +87,139 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
             }
         });
 
+        lblDataSaida.setText("Data Saída:");
+
+        jtfDataSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataSaidaActionPerformed(evt);
+            }
+        });
+
+        lblDataChegada.setText("Data Chegada:");
+
+        jtfDataChegada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataChegadaActionPerformed(evt);
+            }
+        });
+
+        lblHoraSaida.setText("Hora Saída:");
+
+        jtfHoraSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfHoraSaidaActionPerformed(evt);
+            }
+        });
+
+        lblHoraChegada.setText("Hora Chegada:");
+
+        jtfHoraChegada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfHoraChegadaActionPerformed(evt);
+            }
+        });
+
+        lblMotorista.setText("Motorista");
+
+        lblCidadeSaida.setText("Cidade Saída:");
+
+        jtfCidadeSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCidadeSaidaActionPerformed(evt);
+            }
+        });
+
+        lblCidadeSaida1.setText("Cidade Chegada:");
+
+        jtfCidadeChegada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCidadeChegadaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalvar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblEndereco)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfDescricao))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblRG)
-                                .addComponent(lblNome))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtfNumero)
-                                .addComponent(jtfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroDePassageiro)
-                .addGap(135, 135, 135))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblHoraChegada, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblHoraSaida)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblDataSaida)
+                                            .addComponent(lblDataChegada))
+                                        .addComponent(lblNome)
+                                        .addComponent(lblMotorista))
+                                    .addComponent(lblCidadeSaida)
+                                    .addComponent(lblCidadeSaida1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfCidadeSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addComponent(jtfPreco)
+                                    .addComponent(jtfDataChegada, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtfHoraSaida, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtfDataSaida)
+                                    .addComponent(jcbMotorista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtfCidadeChegada, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addComponent(jtfHoraChegada)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnVoltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSalvar))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(lblCadastroDePassageiro)))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(lblCadastroDePassageiro)
-                .addGap(36, 36, 36)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRG)
-                    .addComponent(jtfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDataSaida))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(jtfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDataChegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDataChegada))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEndereco)
-                    .addComponent(jtfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfHoraSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHoraSaida))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfHoraChegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHoraChegada))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCidadeSaida)
+                    .addComponent(jtfCidadeSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCidadeSaida1)
+                    .addComponent(jtfCidadeChegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNome))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMotorista))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
-                .addGap(32, 32, 32))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -152,13 +233,21 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         // TODO add your handling code here:
       
         try {
-            if (jtfNumero.getText().equals("")|| jtfDescricao.getText().equals ("")|| jtfPreco.getText().equals("")){
+            if (jtfDataChegada.getText().equals("")|| jtfDataSaida.getText().equals ("")|| 
+                    jtfHoraSaida.getText().equals ("")|| jtfHoraChegada.getText().equals ("")|| 
+                    jtfCidadeChegada.getText().equals ("")|| jtfCidadeSaida.getText().equals ("")||
+                    jtfPreco.getText().equals("")){
                 throw new Exception ("Nao deve conter campos nulo");
             }
-            int numero = Integer.parseInt(jtfNumero.getText());
-            String descricao = jtfDescricao.getText();
-            float preco = Float.parseFloat(jtfPreco.getText());
-            Viagem v = new Viagem(numero, descricao, preco);
+            Viagem v = new Viagem();
+            
+            v.setCidadeSaida(jtfCidadeSaida.getText());
+            v.setCidadeChegada(jtfCidadeChegada.getText());
+            v.setDataChegada(jtfDataChegada.getText());
+            v.setDataSaida(jtfDataSaida.getText());
+            v.setHoraChegada(jtfHoraChegada.getText());
+            v.setHoraSaida(jtfHoraSaida.getText());
+            v.setPreco(Float.parseFloat(jtfPreco.getText()));
             
             Session session = HibernateUtil.getSession();
             ViagemDAO dao = new ViagemDAO(session);
@@ -174,10 +263,6 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSalvarActionPerformed
  
-    private void jtfNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNumeroActionPerformed
-
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         TelaDeCadastros t = new TelaDeCadastros();
@@ -186,6 +271,30 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void jtfDataSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataSaidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataSaidaActionPerformed
+
+    private void jtfDataChegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataChegadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataChegadaActionPerformed
+
+    private void jtfHoraSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfHoraSaidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfHoraSaidaActionPerformed
+
+    private void jtfHoraChegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfHoraChegadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfHoraChegadaActionPerformed
+
+    private void jtfCidadeSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCidadeSaidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCidadeSaidaActionPerformed
+
+    private void jtfCidadeChegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCidadeChegadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCidadeChegadaActionPerformed
  
     /**
      * @param args the command line arguments
@@ -223,8 +332,12 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
     }
     public void LimparTela () {
 
-        jtfNumero.setText("");
-        jtfDescricao.setText("");
+        jtfCidadeChegada.setText("");
+        jtfCidadeSaida.setText("");
+        jtfDataSaida.setText("");
+        jtfDataChegada.setText("");
+        jtfHoraSaida.setText("");
+        jtfHoraChegada.setText("");
         jtfPreco.setText("");
         
     }
@@ -232,12 +345,22 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JTextField jtfDescricao;
-    private javax.swing.JTextField jtfNumero;
+    private javax.swing.JComboBox<String> jcbMotorista;
+    private javax.swing.JTextField jtfCidadeChegada;
+    private javax.swing.JTextField jtfCidadeSaida;
+    private javax.swing.JTextField jtfDataChegada;
+    private javax.swing.JTextField jtfDataSaida;
+    private javax.swing.JTextField jtfHoraChegada;
+    private javax.swing.JTextField jtfHoraSaida;
     private javax.swing.JTextField jtfPreco;
     private javax.swing.JLabel lblCadastroDePassageiro;
-    private javax.swing.JLabel lblEndereco;
+    private javax.swing.JLabel lblCidadeSaida;
+    private javax.swing.JLabel lblCidadeSaida1;
+    private javax.swing.JLabel lblDataChegada;
+    private javax.swing.JLabel lblDataSaida;
+    private javax.swing.JLabel lblHoraChegada;
+    private javax.swing.JLabel lblHoraSaida;
+    private javax.swing.JLabel lblMotorista;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblRG;
     // End of variables declaration//GEN-END:variables
 }

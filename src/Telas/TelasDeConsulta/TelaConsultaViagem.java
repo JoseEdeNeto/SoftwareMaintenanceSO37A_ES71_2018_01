@@ -35,16 +35,16 @@ public class TelaConsultaViagem extends javax.swing.JFrame {
         modelo.addColumn("Numero");
         modelo.addColumn("Descrição");
         modelo.addColumn("Preço");
-        via = dao.listaviagensSQL("select * from Viagem order by numero");
+        via = dao.listaviagensSQL("select * from viagem order by via_numero");
         Object rowData[] = new Object[3];
         int i = 0;
-        for (Viagem v : via) {
+        /*for (Viagem v : via) {
             rowData[0] = via.get(i).getNumero();
             rowData[1] = via.get(i).getDescricao();
             rowData[2] = via.get(i).getPreco();
             modelo.addRow(rowData);
             i++;
-        }
+        }*/
         jTable2.setModel(modelo);
     }
 
@@ -156,7 +156,7 @@ public class TelaConsultaViagem extends javax.swing.JFrame {
             int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero: "));
             Viagem v = dao.procura(numero);
             String desc = JOptionPane.showInputDialog("Entre com a Descrição: ");
-            v.setDescricao(desc);
+            /*v.setDescricao(desc);*/
             float preco = Float.valueOf(JOptionPane.showInputDialog("Entre com o Preço: "));
             v.setPreco(preco);
             dao.atualiza(v);

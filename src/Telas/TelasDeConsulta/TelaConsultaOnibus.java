@@ -35,7 +35,7 @@ public class TelaConsultaOnibus extends javax.swing.JFrame {
         modelo.addColumn("Numero");
         modelo.addColumn("Placa");
         modelo.addColumn("Qtd Lugares");
-        oni = dao.listaonibusSQL("select * from Onibus order by numero");
+        oni = dao.listaonibusSQL("select * from onibus order by oni_numero");
         Object rowData[] = new Object[3];
         int i = 0;
         for (Onibus o : oni) {

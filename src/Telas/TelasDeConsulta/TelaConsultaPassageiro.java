@@ -34,11 +34,11 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
         modelo.addColumn("Nome");
         modelo.addColumn("Endereço");
         modelo.addColumn("Telefone");
-        pas = dao.listapassageirosSQL("select * from Passageiro order by rg");
+        pas = dao.listapassageirosSQL("select * from passageiro order by pas_nome");
         Object rowData[] = new Object[4];
         int i = 0;
         for (Passageiro p : pas) {
-            rowData[0] = pas.get(i).getRg();
+            rowData[0] = pas.get(i).getCPF();
             rowData[1] = pas.get(i).getNome();
             rowData[2] = pas.get(i).getEndereco();
             rowData[3] = pas.get(i).getTelefone();
