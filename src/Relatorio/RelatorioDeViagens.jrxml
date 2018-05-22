@@ -13,12 +13,19 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[select * from viagem;]]>
 	</queryString>
-	<field name="numero" class="java.lang.Integer"/>
-	<field name="descricao" class="java.lang.String"/>
-	<field name="preco" class="java.lang.Float"/>
+	<field name="via_id" class="java.lang.Long"/>
+	<field name="via_cidade_chegada" class="java.lang.String"/>
+	<field name="via_cidade_saida" class="java.lang.String"/>
+	<field name="via_data_chegada" class="java.lang.String"/>
+	<field name="via_data_saida" class="java.lang.String"/>
+	<field name="via_hora_chegada" class="java.lang.String"/>
+	<field name="via_hora_saida" class="java.lang.String"/>
+	<field name="via_preco" class="java.lang.Float"/>
+	<field name="mot_viagens" class="java.lang.Long"/>
+	<field name="oni_viagens" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -90,21 +97,20 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{via_id}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="18" uuid="b813bf16-91a6-4a8b-a442-9f655622d5e2"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="18" uuid="e41b6d67-080b-4461-8712-09bcbebe6c8b"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{preco}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{via_preco}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

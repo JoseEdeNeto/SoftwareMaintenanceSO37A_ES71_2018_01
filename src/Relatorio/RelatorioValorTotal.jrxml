@@ -13,12 +13,11 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
-		<![CDATA[SELECT viagem.descricao, onibus.qtdlugar, viagem.preco, (preco * qtdlugar) as total from viagem, onibus;]]>
+	<queryString>
+		<![CDATA[SELECT onibus.oni_qtdlugar, viagem.via_preco, (via_preco * oni_qtdlugar) as total from viagem, onibus;]]>
 	</queryString>
-	<field name="descricao" class="java.lang.String"/>
-	<field name="qtdlugar" class="java.lang.Integer"/>
-	<field name="preco" class="java.lang.Float"/>
+	<field name="oni_qtdlugar" class="java.lang.Integer"/>
+	<field name="via_preco" class="java.lang.Float"/>
 	<field name="total" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -98,21 +97,20 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="138" y="0" width="138" height="18" uuid="34a170d6-2a8b-4606-bddb-e73775c62e1d"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{qtdlugar}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{oni_qtdlugar}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="276" y="0" width="138" height="18" uuid="6b934a0f-c0a1-4097-bf58-f27a48824724"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{preco}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{via_preco}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="414" y="0" width="138" height="18" uuid="cfa69867-8b69-4ee7-94ef-f5b5bd2d4923"/>

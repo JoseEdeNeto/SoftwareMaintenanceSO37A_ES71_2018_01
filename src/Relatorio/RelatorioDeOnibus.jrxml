@@ -3,9 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
-	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
-	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
 	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
 	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
@@ -13,12 +13,13 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[select * from onibus;]]>
 	</queryString>
-	<field name="numero" class="java.lang.Integer"/>
-	<field name="placa" class="java.lang.String"/>
-	<field name="qtdlugar" class="java.lang.Integer"/>
+	<field name="oni_id" class="java.lang.Long"/>
+	<field name="oni_numero" class="java.lang.Integer"/>
+	<field name="oni_placa" class="java.lang.String"/>
+	<field name="oni_qtdlugar" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -61,21 +62,21 @@
 			<staticText>
 				<reportElement style="Column header" x="0" y="7" width="185" height="18" forecolor="#000000" uuid="ee53cb6d-e2a4-4c4e-9219-f4227796ffb9"/>
 				<textElement>
-					<font isBold="false"/>
+					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Número]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="185" y="7" width="185" height="18" forecolor="#000000" uuid="d48c403a-c834-435b-bfe4-63d6af53a35e"/>
 				<textElement>
-					<font isBold="false"/>
+					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Placa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="370" y="7" width="185" height="18" forecolor="#000000" uuid="7e7477fe-9e79-4b85-9ef6-1994256bc08e"/>
 				<textElement>
-					<font isBold="false"/>
+					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Quantidade de Lugar]]></text>
 			</staticText>
@@ -90,21 +91,21 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{oni_numero}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="18" uuid="aed7fbec-ba4c-49b0-b971-96b1ed15c8be"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{oni_placa}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="18" uuid="b2a5be7a-935e-4ef2-9f14-2a03690154d6"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{qtdlugar}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{oni_qtdlugar}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
@@ -126,21 +127,21 @@
 				<textField evaluationTime="Report">
 					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="0e0b6122-c515-46b0-a9ce-cbbbb7ead30f"/>
 					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
+						<font isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="26cb7149-3965-4922-8f04-965f3c8345a8"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
+						<font isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="37e6a2bf-2948-4212-bdd4-c9f428fde89b"/>
 					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
+						<font isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>

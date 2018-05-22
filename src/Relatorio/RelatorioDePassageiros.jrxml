@@ -13,13 +13,14 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[select * from passageiro;]]>
 	</queryString>
-	<field name="rg" class="java.lang.Integer"/>
-	<field name="endereco" class="java.lang.String"/>
-	<field name="nome" class="java.lang.String"/>
-	<field name="telefone" class="java.lang.Integer"/>
+	<field name="pas_id" class="java.lang.Integer"/>
+	<field name="pas_cpf" class="java.lang.Integer"/>
+	<field name="pas_endereco" class="java.lang.String"/>
+	<field name="pas_nome" class="java.lang.String"/>
+	<field name="pas_telefone" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -64,7 +65,7 @@
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[RG]]></text>
+				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="138" y="7" width="138" height="18" forecolor="#000000" uuid="098b15b0-9a87-4f5a-bd6a-7c04f986f303"/>
@@ -98,28 +99,28 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{pas_cpf}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="138" y="0" width="138" height="18" uuid="0b28b195-08b0-4038-8338-98037a3fef21"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{pas_endereco}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="276" y="0" width="138" height="18" uuid="19f38d5a-4a3c-4797-8c01-207cf7b957a3"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{pas_nome}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="414" y="0" width="138" height="18" uuid="b810143e-986e-46c4-9dbb-26086003ef2f"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{pas_telefone}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
