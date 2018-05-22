@@ -18,7 +18,7 @@ public class AcessaBD {
     public static final String driver = "org.postgresql.Driver";
     public static final String url = "jdbc:postgresql://localhost:5432/postgres";
     public static final String login = "postgres";
-    public static final String passwd = "123456";
+    public static final String passwd = "utfpr";
     
     static{
         try {

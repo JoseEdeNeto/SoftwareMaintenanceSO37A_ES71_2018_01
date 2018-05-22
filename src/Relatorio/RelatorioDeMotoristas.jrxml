@@ -13,13 +13,14 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[select * from motorista;]]>
 	</queryString>
-	<field name="cnh" class="java.lang.Integer"/>
-	<field name="endereco" class="java.lang.String"/>
-	<field name="nome" class="java.lang.String"/>
-	<field name="telefone" class="java.lang.Integer"/>
+	<field name="mot_id" class="java.lang.Long"/>
+	<field name="mot_cnh" class="java.lang.Integer"/>
+	<field name="mot_endereco" class="java.lang.String"/>
+	<field name="mot_nome" class="java.lang.String"/>
+	<field name="mot_telefone" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -98,28 +99,28 @@
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{cnh}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{mot_cnh}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="138" y="0" width="138" height="18" uuid="740cce5b-0201-4fe6-ae8e-3bef0fd36cd1"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{mot_endereco}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="276" y="0" width="138" height="18" uuid="87d43db5-9e2a-41be-9c3c-998e733b9fed"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{mot_nome}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" x="414" y="0" width="138" height="18" uuid="4c4991c0-e791-4332-9abe-6afb051f7587"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{mot_telefone}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
