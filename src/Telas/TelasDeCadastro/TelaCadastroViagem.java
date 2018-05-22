@@ -1,13 +1,13 @@
 package Telas.TelasDeCadastro;
 
 import Classes.Motorista;
-import Telas.TelasDeCadastro.TelaDeCadastros;
 import Classes.Passageiro;
 import Classes.Viagem;
 import ClassesDAO.MotoristaDAO;
 import ClassesDAO.PassageiroDAO;
 import ClassesDAO.ViagemDAO;
 import Controller.HibernateUtil;
+import Telas.TelaPrincipal;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,6 +20,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
     public TelaCadastroViagem() {
         initComponents();
         popularJcbMotorista();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
     
     public void popularJcbMotorista(){
@@ -142,46 +143,45 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblHoraChegada, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblHoraSaida)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDataSaida)
-                                            .addComponent(lblDataChegada))
-                                        .addComponent(lblNome)
-                                        .addComponent(lblMotorista))
-                                    .addComponent(lblCidadeSaida)
-                                    .addComponent(lblCidadeSaida1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfCidadeSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                                    .addComponent(jtfPreco)
-                                    .addComponent(jtfDataChegada, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfHoraSaida, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfDataSaida)
-                                    .addComponent(jcbMotorista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfCidadeChegada, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                                    .addComponent(jtfHoraChegada)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnVoltar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalvar))))
+                                    .addComponent(lblHoraChegada, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblHoraSaida)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblDataSaida)
+                                        .addComponent(lblDataChegada))
+                                    .addComponent(lblNome)
+                                    .addComponent(lblMotorista))
+                                .addComponent(lblCidadeSaida)
+                                .addComponent(lblCidadeSaida1))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfCidadeSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                .addComponent(jtfPreco)
+                                .addComponent(jtfDataChegada, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jtfHoraSaida, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jtfDataSaida)
+                                .addComponent(jcbMotorista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtfCidadeChegada, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                .addComponent(jtfHoraChegada)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(btnVoltar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnSalvar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
+                        .addGap(147, 147, 147)
                         .addComponent(lblCadastroDePassageiro)))
-                .addGap(33, 33, 33))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(lblCadastroDePassageiro)
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,7 +219,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
-                .addGap(34, 34, 34))
+                .addGap(57, 57, 57))
         );
 
         pack();
@@ -265,9 +265,8 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
  
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        TelaDeCadastros t = new TelaDeCadastros();
-        TelaCadastroViagem tela = new TelaCadastroViagem();
-        t.setVisible(true);
+        TelaPrincipal tela = new TelaPrincipal();
+        tela.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_btnVoltarActionPerformed

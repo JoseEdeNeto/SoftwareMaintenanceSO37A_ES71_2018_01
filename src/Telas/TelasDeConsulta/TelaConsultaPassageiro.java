@@ -8,6 +8,7 @@ package Telas.TelasDeConsulta;
 import Classes.Passageiro;
 import ClassesDAO.PassageiroDAO;
 import Controller.HibernateUtil;
+import Telas.TelaPrincipal;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
      */
     public TelaConsultaPassageiro() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -114,20 +116,20 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jtfPassageiro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jtfPassageiro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnVoltar)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +184,8 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        TelaConsultar t = new TelaConsultar();
-        TelaConsultaPassageiro tela = new TelaConsultaPassageiro();
-        t.setVisible(true);
+        TelaPrincipal tela = new TelaPrincipal();
+        tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
