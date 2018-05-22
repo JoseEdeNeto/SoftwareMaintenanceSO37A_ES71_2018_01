@@ -32,18 +32,20 @@ public class TelaConsultaMotorista extends javax.swing.JFrame {
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
         modelo.addColumn("CNH");
         modelo.addColumn("Nome");
         modelo.addColumn("Endereço");
         modelo.addColumn("Telefone");
         mot = dao.listamotoristasSQL("select * from motorista order by mot_nome");
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[5];
         int i = 0;
         for (Motorista m : mot) {
-            rowData[0] = mot.get(i).getCnh();
-            rowData[1] = mot.get(i).getNome();
-            rowData[2] = mot.get(i).getEndereco();
-            rowData[3] = mot.get(i).getTelefone();
+            rowData[0] = mot.get(i).getId();
+            rowData[1] = mot.get(i).getCnh();
+            rowData[2] = mot.get(i).getNome();
+            rowData[3] = mot.get(i).getEndereco();
+            rowData[4] = mot.get(i).getTelefone();
             modelo.addRow(rowData);
             i++;
         }
@@ -155,8 +157,10 @@ public class TelaConsultaMotorista extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         try {
-            int cnh = Integer.valueOf(JOptionPane.showInputDialog("Entre com o CNH: "));
-            Motorista m = dao.procura(cnh);
+            Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com a ID do motorista: "));
+            Motorista m = dao.procura(id);
+            int cnh = Integer.valueOf(JOptionPane.showInputDialog("Entre com a CNH: "));
+            m.setCnh(cnh);
             String nome = JOptionPane.showInputDialog("Entre com o Nome: ");
             m.setNome(nome);
             String end = JOptionPane.showInputDialog("Entre com o Endereco: ");
@@ -172,8 +176,8 @@ public class TelaConsultaMotorista extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        int cnh = Integer.valueOf(JOptionPane.showInputDialog("Entre com o CNH: "));
-        Motorista m = dao.procura(cnh);
+        Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com a ID do motorista: "));
+        Motorista m = dao.procura(id);
         dao.remove(m);
         organizaTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed

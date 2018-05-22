@@ -41,9 +41,9 @@ public class OnibusDAO {
         tx.commit();
     }
     
-    public Onibus procura(int numero) {
+    public Onibus procura(Long id) {
         return (Onibus) 
-                this.session.load(Onibus.class, numero);
+                this.session.load(Onibus.class, id);
     }
 
     public List<Onibus> listaTudo() {

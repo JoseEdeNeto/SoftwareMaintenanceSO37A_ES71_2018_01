@@ -39,9 +39,9 @@ public class ViagemDAO {
         tx.commit();
     }
     
-    public Viagem procura(int numero) {
+    public Viagem procura(Long id) {
         return (Viagem) 
-                this.session.load(Viagem.class, numero);
+                this.session.load(Viagem.class, id);
     }
 
     public List<Viagem> listaTudo() {

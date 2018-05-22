@@ -40,9 +40,9 @@ public class MotoristaDAO {
         tx.commit();
     }
     
-    public Motorista procura(int cnh) {
+    public Motorista procura(Long id) {
         return (Motorista) 
-                this.session.load(Motorista.class, cnh);
+                this.session.load(Motorista.class, id);
     }
 
     public List<Motorista> listaTudo() {

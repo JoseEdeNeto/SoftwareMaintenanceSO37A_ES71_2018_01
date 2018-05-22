@@ -30,18 +30,20 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
         modelo.addColumn("RG");
         modelo.addColumn("Nome");
         modelo.addColumn("Endereço");
         modelo.addColumn("Telefone");
         pas = dao.listapassageirosSQL("select * from passageiro order by pas_nome");
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[5];
         int i = 0;
         for (Passageiro p : pas) {
-            rowData[0] = pas.get(i).getCPF();
-            rowData[1] = pas.get(i).getNome();
-            rowData[2] = pas.get(i).getEndereco();
-            rowData[3] = pas.get(i).getTelefone();
+            rowData[0] = pas.get(i).getId();
+            rowData[1] = pas.get(i).getCPF();
+            rowData[2] = pas.get(i).getNome();
+            rowData[3] = pas.get(i).getEndereco();
+            rowData[4] = pas.get(i).getTelefone();
             modelo.addRow(rowData);
             i++;
         }
@@ -153,8 +155,10 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         try {
+            Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID: "));
+            Passageiro p = dao.procura(id);
             int rg = Integer.valueOf(JOptionPane.showInputDialog("Entre com o RG: "));
-            Passageiro p = dao.procura(rg);
+            p.setRg(rg);
             String nome = JOptionPane.showInputDialog("Entre com o Nome: ");
             p.setNome(nome);
             String end = JOptionPane.showInputDialog("Entre com o Endereco: ");
@@ -170,8 +174,8 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        int rg = Integer.valueOf(JOptionPane.showInputDialog("Entre com o RG: "));
-        Passageiro p = dao.procura(rg);
+        Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID: "));
+        Passageiro p = dao.procura(id);
         dao.remove(p);
         organizaTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed

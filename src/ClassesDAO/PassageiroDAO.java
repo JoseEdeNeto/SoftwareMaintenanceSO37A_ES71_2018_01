@@ -41,9 +41,9 @@ public class PassageiroDAO {
         tx.commit();
     }
     
-    public Passageiro procura(int rg) {
+    public Passageiro procura(Long id) {
         return (Passageiro) 
-                this.session.load(Passageiro.class, rg);
+                this.session.load(Passageiro.class, id);
     }
 
     public List<Passageiro> listaTudo() {

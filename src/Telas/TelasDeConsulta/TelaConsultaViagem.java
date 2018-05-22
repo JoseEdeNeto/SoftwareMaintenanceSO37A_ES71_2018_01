@@ -153,8 +153,8 @@ public class TelaConsultaViagem extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         try{
-            int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero: "));
-            Viagem v = dao.procura(numero);
+            Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID: "));
+            Viagem v = dao.procura(id);
             String desc = JOptionPane.showInputDialog("Entre com a Descrição: ");
             /*v.setDescricao(desc);*/
             float preco = Float.valueOf(JOptionPane.showInputDialog("Entre com o Preço: "));
@@ -168,8 +168,8 @@ public class TelaConsultaViagem extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero: "));
-        Viagem v = dao.procura(numero);
+        Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID: "));
+        Viagem v = dao.procura(id);
         dao.remove(v);
         organizaTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed

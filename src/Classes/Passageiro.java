@@ -15,7 +15,7 @@ public class Passageiro implements Serializable {
   
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "pas_id")
-    private int id;
+    private Long id;
     
     @Column(name = "pas_cpf", nullable = false)
     private int cpf;
@@ -39,7 +39,7 @@ public class Passageiro implements Serializable {
         this.telefone = telefone;
     }
     
-    public int getId(){
+    public Long getId(){
         return id;
     }
 
@@ -83,7 +83,7 @@ public class Passageiro implements Serializable {
         this.endereco = endereco;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     

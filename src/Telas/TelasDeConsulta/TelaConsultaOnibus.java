@@ -32,16 +32,18 @@ public class TelaConsultaOnibus extends javax.swing.JFrame {
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
         modelo.addColumn("Numero");
         modelo.addColumn("Placa");
         modelo.addColumn("Qtd Lugares");
         oni = dao.listaonibusSQL("select * from onibus order by oni_numero");
-        Object rowData[] = new Object[3];
+        Object rowData[] = new Object[4];
         int i = 0;
         for (Onibus o : oni) {
-            rowData[0] = oni.get(i).getNumero();
-            rowData[1] = oni.get(i).getPlaca();
-            rowData[2] = oni.get(i).getQtdlugar();
+            rowData[0] = oni.get(i).getId();
+            rowData[1] = oni.get(i).getNumero();
+            rowData[2] = oni.get(i).getPlaca();
+            rowData[3] = oni.get(i).getQtdlugar();
             modelo.addRow(rowData);
             i++;
         }
@@ -153,8 +155,10 @@ public class TelaConsultaOnibus extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         try {
-            int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero: "));
-            Onibus o = dao.procura(numero);
+            Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID do Onibus: "));
+            Onibus o = dao.procura(id);
+            int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero do Onibus: "));
+            o.setNumero(numero);
             String placa = JOptionPane.showInputDialog("Entre com o Placa: ");
             o.setPlaca(placa);
             int qtd = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Quantidade de Lugar: "));
@@ -169,8 +173,8 @@ public class TelaConsultaOnibus extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        int numero = Integer.valueOf(JOptionPane.showInputDialog("Entre com o Numero: "));
-        Onibus o = dao.procura(numero);
+        Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID do Onibus: "));
+        Onibus o = dao.procura(id);
         dao.remove(o);
         organizaTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed
