@@ -5,6 +5,7 @@ import Telas.TelasDeCadastro.TelaCadastroMotorista;
 import Telas.TelasDeCadastro.TelaCadastroOnibus;
 import Telas.TelasDeCadastro.TelaCadastroPassageiro;
 import Telas.TelasDeCadastro.TelaCadastroViagem;
+import Telas.TelasDeCadastro.TelaGerenciaPassageirosViagem;
 import Telas.TelasDeConsulta.TelaConsultaMotorista;
 import Telas.TelasDeConsulta.TelaConsultaOnibus;
 import Telas.TelasDeConsulta.TelaConsultaPassageiro;
@@ -57,6 +58,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemCadastrarOnibus = new javax.swing.JMenuItem();
         jMenuItemCadastrarPassageiro = new javax.swing.JMenuItem();
         jMenuItemCadastrarViajem = new javax.swing.JMenuItem();
+        jMenuItemGerenciaPassageiro = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
         jMenuItemRelMot = new javax.swing.JMenuItem();
         jMenuItemRelOni = new javax.swing.JMenuItem();
@@ -143,6 +145,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuCadastros.add(jMenuItemCadastrarViajem);
+
+        jMenuItemGerenciaPassageiro.setText("Gerencia Passageiro - Viagem");
+        jMenuItemGerenciaPassageiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGerenciaPassageiroActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemGerenciaPassageiro);
 
         jMenuBar1.add(jMenuCadastros);
 
@@ -342,6 +352,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemRelViaEspActionPerformed
 
+    private void jMenuItemGerenciaPassageiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGerenciaPassageiroActionPerformed
+        TelaGerenciaPassageirosViagem tela = new TelaGerenciaPassageirosViagem();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItemGerenciaPassageiroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,6 +406,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemConsultarOnibus;
     private javax.swing.JMenuItem jMenuItemConsultarPassageiro;
     private javax.swing.JMenuItem jMenuItemConsultarViagem;
+    private javax.swing.JMenuItem jMenuItemGerenciaPassageiro;
     private javax.swing.JMenuItem jMenuItemRelMot;
     private javax.swing.JMenuItem jMenuItemRelOni;
     private javax.swing.JMenuItem jMenuItemRelPas;

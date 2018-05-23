@@ -59,7 +59,7 @@ public class OnibusDAO {
 
     public List <Onibus> listaonibus(int numero){
         return session.createQuery(
-                "from onibus where numero>"+numero).list();
+                "from onibus where oni_numero>"+numero).list();
     }
 
     public List <Onibus> listaonibusSQL(String sql){
