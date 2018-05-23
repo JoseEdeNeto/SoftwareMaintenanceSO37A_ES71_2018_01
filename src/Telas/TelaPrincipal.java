@@ -10,7 +10,6 @@ import Telas.TelasDeConsulta.TelaConsultaOnibus;
 import Telas.TelasDeConsulta.TelaConsultaPassageiro;
 import Telas.TelasDeConsulta.TelaConsultaViagem;
 import Telas.TelasDeRelatorio.AcessaBD;
-import Telas.TelasDeRelatorio.TelaDeRelatorios;
 import java.util.HashMap;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -47,7 +46,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnSair = new javax.swing.JButton();
-        btnRelatorios = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConsultas = new javax.swing.JMenu();
         jMenuItemConsultarMotorista = new javax.swing.JMenuItem();
@@ -73,13 +71,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
-            }
-        });
-
-        btnRelatorios.setText("Relatórios");
-        btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatoriosActionPerformed(evt);
             }
         });
 
@@ -214,36 +205,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(btnRelatorios)
-                        .addGap(0, 41, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair)))
+                .addContainerGap(339, Short.MAX_VALUE)
+                .addComponent(btnSair)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
-                .addComponent(btnRelatorios)
-                .addGap(46, 46, 46)
+                .addContainerGap(245, Short.MAX_VALUE)
                 .addComponent(btnSair)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
-        // TODO add your handling code here:
-        TelaPrincipal tela = new TelaPrincipal();
-        TelaDeRelatorios t = new TelaDeRelatorios();
-        t.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void jMenuItemConsultarMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultarMotoristaActionPerformed
         // TODO add your handling code here:
@@ -403,7 +378,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRelatorios;
     private javax.swing.JButton btnSair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;

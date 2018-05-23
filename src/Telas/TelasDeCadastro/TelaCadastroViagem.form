@@ -23,50 +23,52 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="lblHoraChegada" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblHoraSaida" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="lblDataSaida" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDataChegada" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Component id="lblHoraChegada" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblHoraSaida" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="lblDataSaida" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDataChegada" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMotorista" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMotorista" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCidadeSaida" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCidadeSaida1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblCidadeSaida" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCidadeSaida1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jtfCidadeSaida" pref="647" max="32767" attributes="0"/>
+                                  <Component id="jtfPreco" max="32767" attributes="0"/>
+                                  <Component id="jtfDataChegada" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jtfHoraSaida" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jtfDataSaida" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jcbMotorista" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfCidadeChegada" alignment="0" pref="647" max="32767" attributes="0"/>
+                                  <Component id="jtfHoraChegada" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfCidadeSaida" pref="325" max="32767" attributes="0"/>
-                              <Component id="jtfPreco" max="32767" attributes="0"/>
-                              <Component id="jtfDataChegada" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jtfHoraSaida" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jtfDataSaida" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jcbMotorista" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtfCidadeChegada" alignment="0" pref="325" max="32767" attributes="0"/>
-                              <Component id="jtfHoraChegada" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Component id="lblCadastroDePassageiro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,24 +105,24 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblCidadeSaida1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfCidadeChegada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfCidadeChegada" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jtfPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfPreco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jcbMotorista" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblMotorista" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
