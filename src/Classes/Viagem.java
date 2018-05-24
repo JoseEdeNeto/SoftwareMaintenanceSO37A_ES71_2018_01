@@ -73,9 +73,9 @@ public class Viagem {
 
     @Override
     public String toString() {
-        return "Viagem{" + "dataSaida=" + dataSaida + ", dataChegada=" + dataChegada + ", horaSaida=" 
+        return id + ";" + "dataSaida=" + dataSaida + ", dataChegada=" + dataChegada + ", horaSaida=" 
                 + horaSaida + ", horaChegada=" + horaChegada + ", preco=" + preco + ", cidadeSaida=" 
-                + cidadeSaida + ", cidadeChegada=" + cidadeChegada + ", Quantidade de lugares=" + onibus.getQtdlugar() + '}';
+                + cidadeSaida + ", cidadeChegada=" + cidadeChegada + ", Quantidade de lugares=" + onibus.getQtdlugar();
     }
     
     

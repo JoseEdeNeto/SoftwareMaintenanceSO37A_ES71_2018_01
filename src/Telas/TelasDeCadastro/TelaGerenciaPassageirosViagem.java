@@ -20,6 +20,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
     
     Session session = HibernateUtil.getSession();
     PassageiroDAO dao = new PassageiroDAO(session);
+    Viagem via = new Viagem();
     List <Passageiro> pas;
     
     public TelaGerenciaPassageirosViagem() {
@@ -43,16 +44,14 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("RG");
+        modelo.addColumn("CPF");
         modelo.addColumn("Nome");
         modelo.addColumn("Endereço");
         modelo.addColumn("Telefone");
-        pas = dao.listapassageirosSQL("select * from passageiro order by pas_nome");
+        pas = via.getPassageiros();
         Object rowData[] = new Object[5];
         int i = 0;
         for (Passageiro p : pas) {
-            rowData[0] = pas.get(i).getId();
             rowData[1] = pas.get(i).getCPF();
             rowData[2] = pas.get(i).getNome();
             rowData[3] = pas.get(i).getEndereco();
@@ -79,6 +78,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbPassageiros = new javax.swing.JTable();
         jbtVoltar = new javax.swing.JButton();
+        btSelecionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +125,13 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             }
         });
 
+        btSelecionar.setText("Selecionar");
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,21 +139,11 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPassageiro)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfPassageiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtBuscar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLista)
                         .addGap(18, 18, 18)
                         .addComponent(jcbListaPassageiro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblViagem)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbListaViagem, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,16 +151,31 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
-                            .addComponent(jbtVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jbtVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lblViagem)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbListaViagem, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lblPassageiro)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfPassageiro)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btSelecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblViagem)
-                    .addComponent(jcbListaViagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbListaViagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSelecionar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassageiro)
@@ -180,8 +192,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jbtVoltar))
         );
 
         pack();
@@ -203,8 +214,19 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbtVoltarActionPerformed
 
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        String idViagem = jcbListaViagem.getSelectedItem().toString().split(";")[0];
+        System.out.println(idViagem);
+        if(idViagem != null){
+            ViagemDAO viaDAO = new ViagemDAO(session);
+            via = viaDAO.procura(Long.parseLong(idViagem));
+            organizaTabela();
+        }
+    }//GEN-LAST:event_btSelecionarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btSelecionar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
