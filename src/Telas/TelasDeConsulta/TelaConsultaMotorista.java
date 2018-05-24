@@ -11,6 +11,7 @@ import ClassesDAO.MotoristaDAO;
 import ClassesDAO.PassageiroDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +31,9 @@ public class TelaConsultaMotorista extends javax.swing.JFrame {
      */
     public TelaConsultaMotorista() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setTitle("Consulta de Motoristas");
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();

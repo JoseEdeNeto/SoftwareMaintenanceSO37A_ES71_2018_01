@@ -9,6 +9,7 @@ import Classes.Passageiro;
 import ClassesDAO.PassageiroDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +29,9 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
      */
     public TelaConsultaPassageiro() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setTitle("Consulta Passageiros");
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();

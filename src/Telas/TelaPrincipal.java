@@ -11,6 +11,7 @@ import Telas.TelasDeConsulta.TelaConsultaOnibus;
 import Telas.TelasDeConsulta.TelaConsultaPassageiro;
 import Telas.TelasDeConsulta.TelaConsultaViagem;
 import Telas.TelasDeRelatorio.AcessaBD;
+import java.awt.Color;
 import java.util.HashMap;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -34,7 +35,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setTitle("Sistema de Gerenciamento de Viagens");
     }
 
     /**
@@ -46,7 +49,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSair = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConsultas = new javax.swing.JMenu();
         jMenuItemConsultarMotorista = new javax.swing.JMenuItem();
@@ -66,15 +69,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemRelVia = new javax.swing.JMenuItem();
         jMenuItemRelViaEsp = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnSair.setText("Sair");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem_combe.jpg"))); // NOI18N
+        jLabel3.setAutoscrolls(true);
 
         jMenuConsultas.setText("Consultas");
 
@@ -200,12 +200,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuRelatorios);
 
-        jMenuSobre.setText("Sobre");
+        jMenuSobre.setText("Opções");
         jMenuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuSobreActionPerformed(evt);
             }
         });
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuSobre.add(jMenuItemSair);
+
         jMenuBar1.add(jMenuSobre);
 
         setJMenuBar(jMenuBar1);
@@ -214,17 +223,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(339, Short.MAX_VALUE)
-                .addComponent(btnSair)
-                .addContainerGap())
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
-                .addComponent(btnSair)
-                .addContainerGap())
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -291,11 +294,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuSobreActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:,
-        System.exit(0);
-    }//GEN-LAST:event_btnSairActionPerformed
-
     private void jMenuItemRelMotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelMotActionPerformed
         // TODO add your handling code here:
         HashMap map = new HashMap(); 
@@ -358,6 +356,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItemGerenciaPassageiroActionPerformed
 
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,7 +397,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSair;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenu jMenuConsultas;
@@ -412,6 +415,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemRelPas;
     private javax.swing.JMenuItem jMenuItemRelVia;
     private javax.swing.JMenuItem jMenuItemRelViaEsp;
+    private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JMenu jMenuSobre;
     // End of variables declaration//GEN-END:variables

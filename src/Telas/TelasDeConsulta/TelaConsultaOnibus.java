@@ -11,6 +11,7 @@ import ClassesDAO.OnibusDAO;
 import ClassesDAO.PassageiroDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +31,9 @@ public class TelaConsultaOnibus extends javax.swing.JFrame {
      */
     public TelaConsultaOnibus() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setTitle("Consulta Onibus");
     }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
