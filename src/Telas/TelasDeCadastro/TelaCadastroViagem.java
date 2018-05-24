@@ -10,6 +10,7 @@ import ClassesDAO.PassageiroDAO;
 import ClassesDAO.ViagemDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,7 +32,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
 
         if (motDAO.listaTudo() != null){
             for (Motorista mot : motDAO.listaTudo()){
-                jcbMotorista.addItem(mot.getNome());
+                jcbMotorista.addItem(mot.getId() + " " + mot.getNome());
             }
         }
     }
@@ -40,8 +41,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         
         if (oniDAO.listaTudo() != null) {
             for (Onibus oni : oniDAO.listaTudo()) {
-                String onibus = "Numero " + oni.getNumero() + " - Lugares " + oni.getQtdlugar();
-                System.out.println(onibus);
+                String onibus = oni.getId()+ " " + "Numero " + oni.getNumero() + " - Lugares " + oni.getQtdlugar();
                 jcbOnibus.addItem(onibus);
             }
         }
@@ -270,6 +270,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         // TODO add your handling code here:
       
         try {
+            Session session = HibernateUtil.getSession();
             if (jtfDataChegada.getText().equals("")|| jtfDataSaida.getText().equals ("")|| 
                     jtfHoraSaida.getText().equals ("")|| jtfHoraChegada.getText().equals ("")|| 
                     jtfCidadeChegada.getText().equals ("")|| jtfCidadeSaida.getText().equals ("")||
@@ -285,8 +286,19 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
             v.setHoraChegada(jtfHoraChegada.getText());
             v.setHoraSaida(jtfHoraSaida.getText());
             v.setPreco(Float.parseFloat(jtfPreco.getText()));
+            Motorista mot;
+            String idMot = jcbMotorista.getSelectedItem().toString().split(" ")[0];
+            MotoristaDAO motDAO = new MotoristaDAO(session);
+            mot = motDAO.procura(Long.parseLong(idMot));
+            System.out.println(mot.getNome());
+            v.setMotorista(mot);
+            Onibus oni;
+            String idOni = jcbOnibus.getSelectedItem().toString().split(" ")[0];
+            OnibusDAO oniDAO = new OnibusDAO(session);
+            oni = oniDAO.procura(Long.parseLong(idOni));
+            System.out.println(oni.getPlaca());
+            v.setOnibus(oni);
             
-            Session session = HibernateUtil.getSession();
             ViagemDAO dao = new ViagemDAO(session);
             
             dao.salva(v);

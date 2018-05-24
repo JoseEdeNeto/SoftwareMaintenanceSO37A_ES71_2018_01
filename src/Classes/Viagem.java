@@ -70,6 +70,15 @@ public class Viagem {
         this.onibus = onibus;
         this.passageiros = passageiros;
     }
+
+    @Override
+    public String toString() {
+        return "Viagem{" + "dataSaida=" + dataSaida + ", dataChegada=" + dataChegada + ", horaSaida=" 
+                + horaSaida + ", horaChegada=" + horaChegada + ", preco=" + preco + ", cidadeSaida=" 
+                + cidadeSaida + ", cidadeChegada=" + cidadeChegada + ", Quantidade de lugares=" + onibus.getQtdlugar() + '}';
+    }
+    
+    
     
     public float getPreco() {
         return preco;

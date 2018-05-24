@@ -32,7 +32,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
 
         if (viaDAO.listaTudo() != null){
             for (Viagem via : viaDAO.listaTudo()){
-                jcbListaViagem.addItem("Cidade saida: "+ via.getCidadeSaida()+" Cidade chegada "+via.getCidadeChegada());
+                jcbListaViagem.addItem(via.toString());
             }
         }
     }
