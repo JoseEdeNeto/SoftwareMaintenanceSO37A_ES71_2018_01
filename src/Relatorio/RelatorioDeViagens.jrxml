@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioDeViagens" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca311510-3028-4268-ba01-eeede6f73c69">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
@@ -14,7 +14,9 @@
 		</conditionalStyle>
 	</style>
 	<queryString>
-		<![CDATA[select * from viagem;]]>
+		<![CDATA[select * from viagem 
+INNER JOIN onibus ON onibus.oni_id=viagem.oni_viagens
+INNER JOIN motorista ON motorista.mot_id=viagem.mot_viagens;]]>
 	</queryString>
 	<field name="via_id" class="java.lang.Long"/>
 	<field name="via_cidade_chegada" class="java.lang.String"/>
@@ -26,13 +28,22 @@
 	<field name="via_preco" class="java.lang.Float"/>
 	<field name="mot_viagens" class="java.lang.Long"/>
 	<field name="oni_viagens" class="java.lang.Long"/>
+	<field name="oni_id" class="java.lang.Long"/>
+	<field name="oni_numero" class="java.lang.Integer"/>
+	<field name="oni_placa" class="java.lang.String"/>
+	<field name="oni_qtdlugar" class="java.lang.Integer"/>
+	<field name="mot_id" class="java.lang.Long"/>
+	<field name="mot_cnh" class="java.lang.Integer"/>
+	<field name="mot_endereco" class="java.lang.String"/>
+	<field name="mot_nome" class="java.lang.String"/>
+	<field name="mot_telefone" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="165c605a-847c-4aae-b395-c7cf7a45be3a"/>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="95" backcolor="#000000" uuid="165c605a-847c-4aae-b395-c7cf7a45be3a"/>
 				<staticText>
 					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="f87873d6-993e-442d-be26-cca45736c4aa"/>
 					<textElement>
@@ -49,9 +60,9 @@
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b8da9f6d-1cb0-43c8-9ac4-d34d9aef779b"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b8da9f6d-1cb0-43c8-9ac4-d34d9aef779b"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="48c5bc31-65a9-4c91-9b1d-1d7240732316"/>
+					<reportElement x="409" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="48c5bc31-65a9-4c91-9b1d-1d7240732316"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -64,59 +75,160 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="26" splitType="Stretch">
+		<band height="26" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="88" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="2" y="18" width="555" height="18" uuid="18769c2e-9bfd-450c-b59c-d63e82b2a09e"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="63" height="18" uuid="b4b45a4b-ac7b-497d-ac2e-e9820ed59adb"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_data_saida}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="63" y="0" width="62" height="18" uuid="693a4e62-a535-4070-bdc6-0bdaf05be57f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_data_chegada}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="125" y="0" width="68" height="18" uuid="347b397c-cacf-4885-b4a0-34ffcd216fa7"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_hora_saida}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="193" y="0" width="49" height="18" uuid="e5477e0e-31d4-4043-be3a-d94c642b53ad"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_hora_chegada}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="242" y="0" width="153" height="18" uuid="df028593-0779-4721-9ec8-8a386b1f308f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_cidade_saida}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="395" y="0" width="158" height="18" uuid="339b10bf-ed4d-470b-a701-839170e18687"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{via_cidade_chegada}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="-2" y="57" width="555" height="18" uuid="bc251cbb-cf8f-40ff-92cc-185040f020e1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="2" y="0" width="96" height="18" uuid="a85a7289-c45b-4bd9-94d0-1697c1fe4862"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{oni_numero}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="98" y="0" width="96" height="18" uuid="a30b99ef-3a3d-431c-a647-891740897422"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{oni_qtdlugar}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" mode="Opaque" x="195" y="0" width="273" height="18" uuid="388cf96d-67b1-4789-888e-9e239a95c905"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{mot_nome}]]></textFieldExpression>
+				</textField>
+			</frame>
 			<staticText>
-				<reportElement style="Column header" x="0" y="7" width="185" height="18" forecolor="#000000" uuid="03441477-9ddc-45ba-a71b-1da73e9eb42a"/>
-				<textElement>
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Número]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="185" y="7" width="185" height="18" forecolor="#000000" uuid="4846bb4d-008b-499f-b4c7-7d64eea44ff5"/>
-				<textElement>
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Descricao]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="370" y="7" width="185" height="18" forecolor="#000000" uuid="e5462e17-254d-4c80-9fe3-dc1658ae9daa"/>
+				<reportElement style="Column header" x="468" y="36" width="87" height="18" forecolor="#000000" uuid="e5462e17-254d-4c80-9fe3-dc1658ae9daa"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Preço]]></text>
 			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="18" splitType="Stretch">
-			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="18769c2e-9bfd-450c-b59c-d63e82b2a09e"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="185" height="18" uuid="b4b45a4b-ac7b-497d-ac2e-e9820ed59adb"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{via_id}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="18" uuid="b813bf16-91a6-4a8b-a442-9f655622d5e2"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="18" uuid="e41b6d67-080b-4461-8712-09bcbebe6c8b"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{via_preco}]]></textFieldExpression>
-				</textField>
-			</frame>
+			<staticText>
+				<reportElement style="Column header" x="0" y="36" width="96" height="18" forecolor="#000000" uuid="f22ed140-d75c-4d2a-9272-ffb690263582"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Número Ônibus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="36" width="96" height="18" forecolor="#000000" uuid="aac489ba-d130-410d-a173-a4830ce0f8f7"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lugares Ônibus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="192" y="36" width="274" height="18" forecolor="#000000" uuid="5cd58394-fb3f-4a9b-b5b7-316b71b3471e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nome motorista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="65" height="18" forecolor="#000000" uuid="03441477-9ddc-45ba-a71b-1da73e9eb42a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Data Saída/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="127" y="0" width="68" height="18" forecolor="#000000" uuid="4846bb4d-008b-499f-b4c7-7d64eea44ff5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Hora Saída/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="65" y="0" width="62" height="18" forecolor="#000000" uuid="be9fb4c2-5041-4cfe-a9b6-13df13e40830"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Chegada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="195" y="0" width="49" height="18" forecolor="#000000" uuid="1655f55e-589a-4e17-8860-62bc82bd02b1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Chegada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="397" y="0" width="156" height="18" forecolor="#000000" uuid="ed4b2e73-2240-4c3f-9d4b-73fefed3f162"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Destino]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="468" y="57" width="87" height="18" uuid="ebd18e2c-b13e-4215-9239-ff36c158dd93"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{via_preco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="244" y="0" width="153" height="18" forecolor="#000000" uuid="87e49220-4d20-4dda-83a2-4127c0518472"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[|Origem]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
+		<band height="10" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="7ef48734-3fa8-41b7-a56a-0e02b70b6565"/>
 				<graphicElement>
