@@ -38,11 +38,16 @@ public class Passageiro implements Serializable {
         this.endereco = endereco;
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return id + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + '}';
+    }
     
     public Long getId(){
         return id;
     }
-
+    
     public int getCpf() {
         return cpf;
     }
