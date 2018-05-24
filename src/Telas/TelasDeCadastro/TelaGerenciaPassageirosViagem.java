@@ -36,6 +36,11 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             }
         }
     }
+    private void popularJcbListaPassageiro(List<Passageiro> listaPassageiro) {
+        for (Passageiro pas : listaPassageiro) {
+            jcbListaPassageiro.addItem(pas.toString());
+        }
+    }
     private void organizaTabela() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -67,7 +72,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         lblPassageiro = new javax.swing.JLabel();
         jtfPassageiro = new javax.swing.JTextField();
         lblLista = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbtBuscar = new javax.swing.JButton();
         jcbListaPassageiro = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -89,10 +94,10 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
 
         lblLista.setText("Lista:");
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtBuscar.setText("Buscar");
+        jbtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtBuscarActionPerformed(evt);
             }
         });
 
@@ -133,7 +138,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jtfPassageiro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(jbtBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLista)
                         .addGap(18, 18, 18)
@@ -163,7 +168,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassageiro)
                     .addComponent(jtfPassageiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jbtBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLista)
@@ -174,17 +179,19 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jbtVoltar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarActionPerformed
+        String nomePassageiro = "SELECT * FROM passageiro WHERE pas_nome LIKE '%"+jtfPassageiro.getText()+"%'";
+        List<Passageiro> listaPassageiro = dao.listapassageirosSQL(nomePassageiro);
+        popularJcbListaPassageiro(listaPassageiro);
+    }//GEN-LAST:event_jbtBuscarActionPerformed
 
     private void jcbListaViagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaViagemActionPerformed
         // TODO add your handling code here:
@@ -198,10 +205,10 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtBuscar;
     private javax.swing.JButton jbtVoltar;
     private javax.swing.JComboBox<String> jcbListaPassageiro;
     private javax.swing.JComboBox<String> jcbListaViagem;
