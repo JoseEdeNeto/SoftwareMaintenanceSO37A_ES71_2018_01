@@ -38,8 +38,8 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         }
     }
     private void popularJcbListaPassageiro(List<Passageiro> listaPassageiro) {
-        for (Passageiro pas : listaPassageiro) {
-            jcbListaPassageiro.addItem(pas.toString());
+        for (Passageiro p : listaPassageiro) {
+            jcbListaPassageiro.addItem(p.toString());
         }
     }
     private void organizaTabela() {
@@ -52,10 +52,10 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         Object rowData[] = new Object[5];
         int i = 0;
         for (Passageiro p : pas) {
-            rowData[1] = pas.get(i).getCPF();
-            rowData[2] = pas.get(i).getNome();
-            rowData[3] = pas.get(i).getEndereco();
-            rowData[4] = pas.get(i).getTelefone();
+            rowData[0] = pas.get(i).getCPF();
+            rowData[1] = pas.get(i).getNome();
+            rowData[2] = pas.get(i).getEndereco();
+            rowData[3] = pas.get(i).getTelefone();
             modelo.addRow(rowData);
             i++;
         }
@@ -102,8 +102,18 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         });
 
         jButton2.setText("Adicionar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jtbPassageiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,7 +149,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLista)
                         .addGap(18, 18, 18)
@@ -171,7 +181,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblViagem)
                     .addComponent(jcbListaViagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +202,8 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtVoltar))
+                .addComponent(jbtVoltar)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,6 +234,26 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             organizaTabela();
         }
     }//GEN-LAST:event_btSelecionarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String idPas = jcbListaPassageiro.getSelectedItem().toString().split(";")[0];
+        PassageiroDAO pasDAO = new PassageiroDAO(session);
+        Passageiro p = pasDAO.procura(Long.parseLong(idPas));
+        via.getPassageiros().add(p);
+        ViagemDAO viaDAO = new ViagemDAO(session);
+        viaDAO.atualiza(via);
+        organizaTabela();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String idPas = jcbListaPassageiro.getSelectedItem().toString().split(";")[0];
+        PassageiroDAO pasDAO = new PassageiroDAO(session);
+        Passageiro p = pasDAO.procura(Long.parseLong(idPas));
+        via.getPassageiros().remove(p);
+        ViagemDAO viaDAO = new ViagemDAO(session);
+        viaDAO.atualiza(via);
+        organizaTabela();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

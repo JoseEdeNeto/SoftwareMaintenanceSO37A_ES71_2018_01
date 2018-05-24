@@ -41,7 +41,7 @@ public class Passageiro implements Serializable {
 
     @Override
     public String toString() {
-        return id + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + '}';
+        return id + "; cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + '}';
     }
     
     public Long getId(){
