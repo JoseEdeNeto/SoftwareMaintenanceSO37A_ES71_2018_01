@@ -10,6 +10,7 @@ import ClassesDAO.PassageiroDAO;
 import ClassesDAO.ViagemDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -25,6 +26,8 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         popularJcbMotorista();
         popularJcbOnibus();
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.getContentPane().setBackground(Color.white);
+        this.setTitle("Cadastro de Viagens");
     }
     
     public void popularJcbMotorista(){
@@ -77,9 +80,13 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
         jtfCidadeChegada = new javax.swing.JTextField();
         lblOnibus = new javax.swing.JLabel();
         jcbOnibus = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblCadastroDePassageiro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCadastroDePassageiro.setText("Cadastro de Viagem");
 
         lblNome.setText("Preço:");
@@ -168,6 +175,21 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
             }
         });
 
+        jMenuOpcoes.setText("Opções");
+        jMenuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuOpcoes.add(jMenuItemSair);
+
+        jMenuBar1.add(jMenuOpcoes);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,7 +272,7 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOnibus)
                     .addComponent(jcbOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
@@ -349,6 +371,11 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
     private void jcbMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMotoristaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbMotoristaActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
  
     /**
      * @param args the command line arguments
@@ -399,6 +426,9 @@ public class TelaCadastroViagem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JComboBox<String> jcbMotorista;
     private javax.swing.JComboBox<String> jcbOnibus;
     private javax.swing.JTextField jtfCidadeChegada;

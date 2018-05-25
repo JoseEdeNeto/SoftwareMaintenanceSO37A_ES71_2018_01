@@ -72,8 +72,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem_combe.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem_onibus_top.jpg"))); // NOI18N
         jLabel3.setAutoscrolls(true);
 
         jMenuConsultas.setText("Consultas");

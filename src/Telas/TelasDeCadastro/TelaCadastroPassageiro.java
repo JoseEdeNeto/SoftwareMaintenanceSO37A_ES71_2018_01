@@ -5,6 +5,7 @@ import Classes.Passageiro;
 import ClassesDAO.PassageiroDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,6 +30,8 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
     public TelaCadastroPassageiro() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.getContentPane().setBackground(Color.white);
+        this.setTitle("Cadastro de Passageiros");
     }
     
     /**
@@ -51,9 +54,13 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
         jtfTelefone = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblCadastroDePassageiro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCadastroDePassageiro.setText("Cadastro de Passageiro");
 
         lblNome.setText("Nome: ");
@@ -89,6 +96,21 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
+
+        jMenuOpcoes.setText("Opções");
+        jMenuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuOpcoes.add(jMenuItemSair);
+
+        jMenuBar1.add(jMenuOpcoes);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,7 +170,7 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnVoltar))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,6 +218,11 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
  
     /**
      * @param args the command line arguments
@@ -243,6 +270,9 @@ public class TelaCadastroPassageiro extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JTextField jtfEndereco;
     private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfRG;

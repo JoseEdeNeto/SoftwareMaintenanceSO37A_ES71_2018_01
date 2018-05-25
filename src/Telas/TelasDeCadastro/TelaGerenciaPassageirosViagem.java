@@ -12,6 +12,7 @@ import ClassesDAO.PassageiroDAO;
 import ClassesDAO.ViagemDAO;
 import Controller.HibernateUtil;
 import Telas.TelaPrincipal;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Session;
@@ -27,6 +28,8 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         initComponents();
         popularJcbViagem();
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.getContentPane().setBackground(Color.white);
+        this.setTitle("Gerenciamento de Passageiros e Viagens");
     }
     private void popularJcbViagem(){
         ViagemDAO viaDAO = new ViagemDAO(HibernateUtil.getSession());
@@ -79,6 +82,9 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         jtbPassageiros = new javax.swing.JTable();
         jbtVoltar = new javax.swing.JButton();
         btSelecionar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +148,21 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
             }
         });
 
+        jMenuOpcoes.setText("Opções");
+        jMenuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuOpcoes.add(jMenuItemSair);
+
+        jMenuBar1.add(jMenuOpcoes);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,7 +224,7 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbtVoltar)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,11 +276,19 @@ public class TelaGerenciaPassageirosViagem extends javax.swing.JFrame {
         organizaTabela();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSelecionar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtBuscar;
     private javax.swing.JButton jbtVoltar;
