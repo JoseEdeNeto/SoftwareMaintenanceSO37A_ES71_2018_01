@@ -22,6 +22,10 @@ public class MotoristaDAO {
         this.session = session;
     }
 
+    public MotoristaDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void salva(Motorista m) {
         Transaction tx = this.session.beginTransaction();
         this.session.save(m);

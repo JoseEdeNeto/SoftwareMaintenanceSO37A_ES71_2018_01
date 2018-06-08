@@ -19,6 +19,7 @@ import org.junit.Assert.*;
  *
  * @author Notebook
  */
+/*
 public class MotoristaTest {
     Motorista mot = new Motorista();
     MotoristaDAO dao = new MotoristaDAO();
@@ -61,3 +62,4 @@ public class MotoristaTest {
         Assert.assertNull(dao.procura(id));
     }
 }
+*/

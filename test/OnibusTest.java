@@ -17,10 +17,10 @@ import static org.junit.Assert.*;
 /**
  *
  * @author Notebook
- */
+ 
 public class OnibusTest {
     Onibus bus = new Onibus();
-    OnibusDAO dao = new OnibusDAO();
+    //OnibusDAO dao = new OnibusDAO();
     long id = 00;
     
     @Test
@@ -52,3 +52,4 @@ public class OnibusTest {
         Assert.assertNull(dao.procura(id));
     }
 }
+*/

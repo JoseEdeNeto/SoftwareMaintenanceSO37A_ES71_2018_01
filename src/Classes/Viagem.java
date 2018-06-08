@@ -84,8 +84,11 @@ public class Viagem {
         return preco;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setPreco(float preco)throws Exception {
+        if(preco == 0)
+            throw new Exception ("Preco não foi informado!");
+        else
+            this.preco = preco;
     }
 
     public Long getId() {
@@ -100,72 +103,99 @@ public class Viagem {
         return dataSaida;
     }
 
-    public void setDataSaida(String dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setDataSaida(String dataSaida)throws Exception {
+        if(dataSaida == null)
+            throw new Exception ("Data de saida não foi informado!");
+        else
+            this.dataSaida = dataSaida;
     }
 
     public String getDataChegada() {
         return dataChegada;
     }
 
-    public void setDataChegada(String dataChegada) {
-        this.dataChegada = dataChegada;
+    public void setDataChegada(String dataChegada)throws Exception {
+        if(dataChegada == null)
+            throw new Exception ("Data chegada não foi informado!");
+        else
+            this.dataChegada = dataChegada;
     }
 
     public String getHoraSaida() {
         return horaSaida;
     }
 
-    public void setHoraSaida(String horaSaida) {
-        this.horaSaida = horaSaida;
+    public void setHoraSaida(String horaSaida)throws Exception {
+        if(horaSaida == null)
+            throw new Exception ("Hora saida não foi informado!");
+        else
+            this.horaSaida = horaSaida;
     }
 
     public String getHoraChegada() {
         return horaChegada;
     }
 
-    public void setHoraChegada(String horaChegada) {
-        this.horaChegada = horaChegada;
+    public void setHoraChegada(String horaChegada)throws Exception {
+        if(horaChegada == null)
+            throw new Exception ("Hora de chegada não foi informado!");
+        else
+            this.horaChegada = horaChegada;
     }
 
     public String getCidadeSaida() {
         return cidadeSaida;
     }
 
-    public void setCidadeSaida(String cidadeSaida) {
-        this.cidadeSaida = cidadeSaida;
+    public void setCidadeSaida(String cidadeSaida)throws Exception {
+        if(cidadeSaida == null)
+            throw new Exception ("Cidade de saida não foi informado!");
+        else
+            this.cidadeSaida = cidadeSaida;
     }
 
     public String getCidadeChegada() {
         return cidadeChegada;
     }
 
-    public void setCidadeChegada(String cidadeChegada) {
-        this.cidadeChegada = cidadeChegada;
+    public void setCidadeChegada(String cidadeChegada)throws Exception {
+        if(cidadeChegada== null)
+            throw new Exception ("Cidade de chegada não foi informado!");
+        else
+            this.cidadeChegada = cidadeChegada;
     }
 
     public Motorista getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
+    public void setMotorista(Motorista motorista)throws Exception {
+        if(motorista == null)
+            throw new Exception ("Motorista não foi informado!");
+        else
+            this.motorista = motorista;
     }
 
     public Onibus getOnibus() {
         return onibus;
     }
 
-    public void setOnibus(Onibus onibus) {
-        this.onibus = onibus;
+    public void setOnibus(Onibus onibus) throws Exception{
+        if(onibus == null)
+            throw new Exception ("Onibus não foi informado!");
+        else
+            this.onibus = onibus;
     }
 
     public List<Passageiro> getPassageiros() {
         return passageiros;
     }
 
-    public void setPassageiros(List<Passageiro> passageiros) {
-        this.passageiros = passageiros;
+    public void setPassageiros(List<Passageiro> passageiros)throws Exception {
+        if(passageiros == null)
+            throw new Exception ("Passageiro não foi informado!");
+        else
+            this.passageiros = passageiros;
     }
     
 }

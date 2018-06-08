@@ -43,24 +43,33 @@ public class Onibus {
         return numero;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumero(int numero) throws Exception {
+        if(numero == 0)
+            throw new Exception ("Numero não foi informado!");
+        else       
+            this.numero = numero;
     }
 
     public int getQtdlugar() {
         return qtdlugar;
     }
 
-    public void setQtdlugar(int qtdlugar) {
-        this.qtdlugar = qtdlugar;
+    public void setQtdlugar(int qtdlugar) throws Exception {
+        if(qtdlugar == 0)
+            throw new Exception ("Quantidade de lugar não foi informado!");
+        else  
+            this.qtdlugar = qtdlugar;
     }
 
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlaca(String placa) throws Exception {
+        if(placa == null)
+            throw new Exception ("Placa não foi informado!");
+        else  
+            this.placa = placa;
     }
 
     public Long getId() {

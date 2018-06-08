@@ -47,32 +47,44 @@ public class Motorista {
         return cnh;
     }
 
-    public void setCnh(int cnh) {
-        this.cnh = cnh;
+    public void setCnh(int cnh) throws Exception{ 
+            if(cnh == 0)
+                throw new Exception ("Cnh não foi informado!");
+            else
+                this.cnh = cnh;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nome)throws Exception {
+        if (nome == null)
+            throw new Exception ("Nome não foi informado!");
+        else
+            this.nome = nome;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEndereco(String endereco)throws Exception {
+        if(endereco == null)
+            throw new Exception ("Endereco não foi informado!");
+        else
+            this.endereco = endereco;
     }
 
     public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
+    public void setTelefone(int telefone)throws Exception {
+        if (telefone == 0)
+            throw new Exception ("telefone não foi informado!");
+        else
+            this.telefone = telefone;
     }
 
     public Long getId() {
