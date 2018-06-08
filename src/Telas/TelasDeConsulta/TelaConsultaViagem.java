@@ -15,7 +15,9 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jdk.nashorn.internal.objects.NativeError;
 import org.hibernate.Session;
+import static org.jgroups.util.Util.printStackTrace;
 
 /**
  *
@@ -189,6 +191,8 @@ public class TelaConsultaViagem extends javax.swing.JFrame {
             organizaTabela();
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, e);
+        }catch (Exception e){
+            printStackTrace(e);
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
