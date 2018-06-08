@@ -74,13 +74,6 @@ public class Passageiro implements Serializable {
         return getCpf();
     }
 
-    public void setRg(int rg)throws Exception {
-        if(rg == 0)
-            throw new Exception ("RG não foi informado!");
-        else  
-            this.setRg(rg);
-    }
-
     public String getNome() {
         return nome;
     }
