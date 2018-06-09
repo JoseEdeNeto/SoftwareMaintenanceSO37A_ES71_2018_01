@@ -183,8 +183,8 @@ public class TelaConsultaPassageiro extends javax.swing.JFrame {
         try {
             Long id = Long.valueOf(JOptionPane.showInputDialog("Entre com o ID: "));
             Passageiro p = dao.procura(id);
-            int rg = Integer.valueOf(JOptionPane.showInputDialog("Entre com o RG: "));
-            p.setRg(rg);
+            int cpf = Integer.valueOf(JOptionPane.showInputDialog("Entre com o RG: "));
+            p.setCpf(cpf);
             String nome = JOptionPane.showInputDialog("Entre com o Nome: ");
             p.setNome(nome);
             String end = JOptionPane.showInputDialog("Entre com o Endereco: ");
